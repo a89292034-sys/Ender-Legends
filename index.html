@@ -1,45 +1,130 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Donaciones - Ender Legends</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ender Legends</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+color:white;
+text-align:center;
+background:black;
+overflow-x:hidden;
+}
+
+body::before{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:radial-gradient(circle at 20% 30%, #4b0082, transparent),
+radial-gradient(circle at 80% 60%, #6a0dad, transparent),
+radial-gradient(circle at 50% 90%, #2e0057, transparent);
+animation:moveBackground 10s infinite alternate;
+z-index:-1;
+}
+
+@keyframes moveBackground{
+0%{transform:scale(1);}
+100%{transform:scale(1.2);}
+}
+
+nav{
+background:#111;
+padding:15px;
+}
+
+nav button{
+background:none;
+border:none;
+color:white;
+font-size:18px;
+margin:10px;
+cursor:pointer;
+}
+
+nav button:hover{
+color:#bb86fc;
+}
+
+.page{
+display:none;
+padding:40px;
+}
+
+.active{
+display:block;
+}
+
+.donate{
+background:#0070ba;
+border:none;
+padding:15px 40px;
+font-size:20px;
+color:white;
+border-radius:8px;
+cursor:pointer;
+}
+</style>
+
+<script>
+function showPage(page){
+document.querySelectorAll(".page").forEach(p=>{
+p.classList.remove("active")
+})
+document.getElementById(page).classList.add("active")
+}
+</script>
+
 </head>
 
-<body style="margin:0; font-family: Arial, sans-serif; background-color:#111; color:white; text-align:center;">
+<body>
 
-    <div style="padding:50px 20px;">
-        
-        <h1 style="font-size:40px;">🙏 Apoya Ender Legends</h1>
-        
-        <p style="font-size:18px; max-width:600px; margin:auto;">
-            Si te gusta este proyecto y quieres ayudar a que siga creciendo,
-            puedes hacer una donación segura a través de PayPal.
-        </p>
+<h1>🐉 Ender Legends</h1>
 
-        <br><br>
+<nav>
+<button onclick="showPage('inicio')">Inicio</button>
+<button onclick="showPage('comandos')">Comandos</button>
+</nav>
 
-        <a href="https://paypal.me/TomasLakes" target="_blank">
-            <button style="
-                background-color:#0070ba;
-                color:white;
-                font-size:20px;
-                padding:15px 40px;
-                border:none;
-                border-radius:8px;
-                cursor:pointer;
-            ">
-                💳 Donar con PayPal
-            </button>
-        </a>
+<div id="inicio" class="page active">
 
-        <br><br><br>
+<h2>Apoya el servidor</h2>
 
-        <p style="font-size:14px; opacity:0.7;">
-            Gracias por tu apoyo ❤️
-        </p>
+<p>
+Si te gusta el servidor y quieres ayudar a mantenerlo activo,
+puedes hacer una donación.
+</p>
 
-    </div>
+<br>
+
+<a href="https://paypal.me/TomasLakes" target="_blank">
+<button class="donate">💳 Donar con PayPal</button>
+</a>
+
+<br><br>
+
+<p>Gracias por apoyar Ender Legends ❤️</p>
+
+</div>
+
+<div id="comandos" class="page">
+
+<h2>📜 Comandos del servidor</h2>
+
+<p><b>/spawn</b> → Ir al spawn</p>
+<p><b>/sethome</b> → Guardar casa</p>
+<p><b>/home</b> → Ir a tu casa</p>
+<p><b>/tpa</b> → Teletransportarte a un jugador</p>
+<p><b>/rtp</b> → Teletransporte aleatorio</p>
+<p><b>/shop</b> → Abrir la tienda del servidor</p>
+<p><b>/ah</b> → Casa de subastas</p>
+<p><b>/bounty</b> → Colocar recompensa a un jugador</p>
+
+</div>
 
 </body>
 </html>
